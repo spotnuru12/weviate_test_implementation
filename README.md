@@ -2,20 +2,25 @@
 
 steps to run 
 
-1.) create ve
+1.) create ve:
+
 python3 -m venv venv
 source venv/bin/activate
 
 2.)
+
 pip install -r requirements.txt
 
 3.)
+
 python3 manual_weaviate.py
 
-4.) test query 
+4.) test query:
+
 python3
 
 5.) 
+
 import weaviate
 from weaviate.embedded import EmbeddedOptions
 

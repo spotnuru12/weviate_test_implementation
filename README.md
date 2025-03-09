@@ -37,23 +37,17 @@ import weaviate
 from weaviate.embedded import EmbeddedOptions
 from sentence_transformers import SentenceTransformer
 
-# Re-initialize the client with minimal modules
 client = weaviate.Client(
     embedded_options=EmbeddedOptions(
         additional_env_vars={"ENABLE_MODULES": "ref2vec-centroid"}
     )
 )
 
-# Suppose we search for the concept "contraceptives"
 query_text = "contraceptives"
-
-# Use the same embedding model as in manual_weaviate.py
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# Encode our query into a vector
 query_vector = model.encode(query_text).tolist()
 
-# Perform a nearVector query on the PDFInsights class
 search_results = (
     client.query
     .get("PDFInsights", ["text", "metadata"])
